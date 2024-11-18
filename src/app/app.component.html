@@ -1,26 +1,124 @@
-<div class="container-fluid">
-    <div class="row align-items-start">
-      <!-- Menu Vertical -->
-      <div class="col-md-2 d-flex flex-column align-items-center" style="width: 100px;">
-        <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action">Weather</a>
-          <a href="#" class="list-group-item list-group-item-action">Cities</a>
-          <a href="#" class="list-group-item list-group-item-action">Map</a>
-          <a href="#" class="list-group-item list-group-item-action">Settings</a>
-        </div>
+<div class="container-fluid" style="margin-top: 20px;">
+  <!-- "container-fluid" : Utilisé pour créer un conteneur qui prend toute la largeur de la page. 
+                           "container-fluid" est généralement utilisé pour des mises en page où on souhaite occuper 100% de l'espace de l'écran, peu importe la taille. -->
+                           
+  <div class="row align-items-start">
+    <!-- "row" : Crée une ligne de colonnes dans le système de grille Bootstrap. 
+                 C'est une manière d'organiser les éléments horizontalement. ===> ppour avoir le menu et la barre de recherche sur la même ligne
+         "align-items-start" : Utilise Flexbox pour aligner le contenu en haut de la ligne. -->
+
+    <!-- Menu Vertical -->
+    <div class="col-md-2 d-flex flex-column align-items-center" style="width: 100px;">
+      <!-- "col-md-2" : Crée une colonne qui occupe 2/12 de la largeur de l'écran lorsqu'il est medium ou plus (taille "md" ou supérieure). 
+                        Le suffixe "-md" indique que cette taille de colonne s'applique aux écrans de taille moyenne (medium, largeur ≥ 768px) et plus larges.
+           "d-flex" : Active le mode Flexbox pour ce conteneur, permettant un alignement et une distribution flexible des éléments.
+           "flex-column" : Arrange les éléments verticalement à l'intérieur de cette div en mode Flexbox.
+           "align-items-center" : Centre les éléments horizontalement à l'intérieur de cette div. -->
+
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">Home</a>
+        <a href="#" class="list-group-item list-group-item-action">Weather</a>
+        <a href="#" class="list-group-item list-group-item-action">Cities</a>
+        <a href="#" class="list-group-item list-group-item-action">Map</a>
+        <a href="#" class="list-group-item list-group-item-action">Settings</a>
+        <!-- "list-group" : Utilisé pour créer une liste d'éléments avec un style uniforme dans Bootstrap.
+             "list-group-item" : Applique le style de liste à chaque élément, avec un padding et une bordure.
+             "list-group-item-action" : Ajoute un effet "clicable" (hover et focus) à l'élément de liste. -->
       </div>
-  
-      <!-- Barre de recherche -->
-      <div class="col-md-10">
-        <div class="col-md-5">
-          <div class="form">
-            <i class="fa fa-search"></i>
-            <input type="text" class="form-control form-input" placeholder="Search for cities">
-            <span class="left-pan"><i class="fa fa-microphone"></i></span>
+    </div>
+
+    <!-- Barre de recherche -->
+    <div class="col-md-10">
+      <!-- "col-md-10" : Crée une colonne qui occupe 10/12 de la largeur de l'écran en taille medium et supérieure. -->
+      
+      <div class="col-md-8">
+        <!-- "col-md-8" : Crée une sous-colonne qui occupe 8/12 de la largeur de l'écran pour une disposition équilibrée dans cette section. -->
+
+        <div class="form">
+          <i class="fa fa-search"></i>
+          <input type="text" class="form-control form-input" placeholder="Search for cities">
+          <span class="left-pan"><i class="fa fa-microphone"></i></span>
+          <!-- "form-control" : Style utilisé pour les champs de formulaire (input, textarea, etc.) dans Bootstrap.
+               "form-input" : Une classe personnalisée (non Bootstrap) qu'on peut utiliser pour appliquer des styles additionnels au champ. -->
+        </div>
+
+        <div class="col-md-12 mt-5">
+          France
+
+
+
+          
+          <!-- "col-md-8" : Même explication que ci-dessus ; crée une sous-colonne de 8/12 pour cet élément dans la colonne.
+               "mt-2" : Ajoute une marge supérieure de 2 unités Bootstrap. "mt" signifie "margin top", et "2" est l'échelle de marge de Bootstrap allant de 0 à 5. -->
+
+          <div class="container rounded border" style="margin-top: 150px;">
+            <!--Container 1-->
+            <div class="row justify-content-start">
+              <div class="col-md-12">
+                <div class="d-flex justify-content-around align-items-center p-5"> <!--border : pour avoir une bordure pour le conteneur "div"-->
+                  <div class="text-center">
+                    <span class="fw-bold">6:00 AM</span><br>
+                    <span>15°C</span>
+                  </div>
+                  <div class="text-center border-start ps-3"> <!--border-start : pour simuler une barre verticale -->
+                    <span class="fw-bold">9:00 AM</span><br>
+                    <span>18°C</span>
+                  </div>
+                  <div class="text-center border-start ps-3">
+                    <span class="fw-bold">12:00 PM</span><br>
+                    <span>20°C</span>
+                  </div>
+                  <div class="text-center border-start ps-3">
+                    <span class="fw-bold">3:00 PM</span><br>
+                    <span>22°C</span>
+                  </div>
+                  <div class="text-center border-start ps-3">
+                    <span class="fw-bold">6:00 PM</span><br>
+                    <span>19°C</span>
+                  </div>
+                  <div class="text-center border-start ps-3">
+                    <span class="fw-bold">9:00 PM</span><br>
+                    <span>16°C</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container" style="margin-top: 30px;">
+            <!--Container 2-->
+            <div class="row justify-content-start">
+              <div class="col-md-12 rounded border">
+                <div class="d-flex justify-content-between align-items-center p-3"> 
+                  <!--point 1-->
+                  <div class="text-center">
+                    <span class="fw-bold">Real Feel</span><br>
+                    <span>15°C</span>
+                  </div>
+                  <div class="text-center ps-3">
+                    <span class="fw-bold">Wind</span><br>
+                    <span>18°C</span>
+                  </div>
+                  <button>See more</button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-3"> 
+                  <!--point 2-->
+                  <div class="text-center">
+                    <span class="fw-bold">Chance of rain</span><br>
+                    <span>15°C</span>
+                  </div>
+                  <div class="text-center ps-3">
+                    <span class="fw-bold">UV Index</span><br>
+                    <span>18°C</span>
+                  </div>   
+                  <div style="width: 80px;"></div> <!-- Ajuste le pourcentage selon l'espace à combler -->
+                </div>
+            </div>
           </div>
         </div>
-      </div>
 
+      </div>
       
     </div>
   </div>
+</div>
