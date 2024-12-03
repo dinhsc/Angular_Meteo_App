@@ -1,11 +1,10 @@
 <div class="container-fluid" style="margin-top: 20px;">
-  <!-- "container-fluid" : Utilisé pour créer un conteneur qui prend toute la largeur de la page. 
-                           "container-fluid" est généralement utilisé pour des mises en page où on souhaite occuper 100% de l'espace de l'écran, peu importe la taille. -->
-                           
-  <div class="row align-items-start">
+  <!-- "container-fluid" : Utilisé pour créer un conteneur qui prend toute la largeur de la page. -->
+
+  <div class="row d-flex align-items-start">
     <!-- "row" : Crée une ligne de colonnes dans le système de grille Bootstrap. 
-                 C'est une manière d'organiser les éléments horizontalement. ===> ppour avoir le menu et la barre de recherche sur la même ligne
-         "align-items-start" : Utilise Flexbox pour aligner le contenu en haut de la ligne. -->
+         "d-flex" : Utilise Flexbox pour aligner les éléments de manière flexible.
+         "align-items-start" : Aligne le contenu en haut de la ligne. -->
 
     <!-- Menu Vertical -->
     <div class="col-md-3" style="width: 100px;">
@@ -18,7 +17,8 @@
             <a href="#" class="list-group-item list-group-item-action" style="padding-top: 10px;">Home</a>
             
             <!-- Conteneur centré -->
-            <div class="d-flex flex-column align-items-center" style="padding-top: 100px; gap: 20px;"> <!-- gap : espacement entre chaque items -->
+            <div class="d-flex flex-column align-items-center" style="padding-top: 100px; gap: 20px;">
+              <!-- gap : espacement entre chaque item -->
               <a href="#" class="list-group-item list-group-item-action">Weather</a>
               <a href="#" class="list-group-item list-group-item-action">Cities</a>
               <a href="#" class="list-group-item list-group-item-action">Map</a>
@@ -30,12 +30,10 @@
     </div>
     
     <!-- Barre de recherche -->
-    <div class="col-md-8">
-      <!-- "col-md-10" : Crée une colonne qui occupe 10/12 de la largeur de l'écran en taille medium et supérieure. -->
-      
-      <div class="col-md-12">
-        <!-- "col-md-8" : Crée une sous-colonne qui occupe 12/12 de la largeur de l'écran pour une disposition équilibrée dans cette section. -->
+    <div class="col-md-8 border">
+      <!-- "col-md-8" : Crée une colonne qui occupe 8/12 de la largeur de l'écran en taille medium et supérieure. -->
 
+      <div class="col-md-12">
         <div class="form">
           <i class="fa fa-search"></i>
           <input type="text" class="form-control form-input" placeholder="Search for cities">
@@ -44,15 +42,16 @@
                "form-input" : Une classe personnalisée (non Bootstrap) qu'on peut utiliser pour appliquer des styles additionnels au champ. -->
         </div>
 
+        <!-- Home page -->
         <div class="col-md-12 mt-4">
-          <div class="container d-flex justify-content-between rounded">
-            <div class="d-flex flex-column justify-content-between p-3">  <!--Alignement du justify-content vers le bas car on a mis "flex-column"-->
-              <!--On utilise plusieurs span dans une div car span = une ligne-->
+          <div class="container d-flex justify-content-between rounded border">
+            <div class="d-flex flex-column justify-content-between p-3">
+              <!--Alignement du justify-content vers le bas car on a mis "flex-column"-->
               <div class="d-flex flex-column">
                 <span>France</span>
                 <span>Chance of rain: 0%</span>
               </div>
-                <span>19°C</span>
+              <span>19°C</span>
             </div>
             <div>
               <span>
@@ -60,21 +59,19 @@
               </span>
             </div>
           </div>
-
-          
-          <!-- "col-md-8" : Même explication que ci-dessus ; crée une sous-colonne de 8/12 pour cet élément dans la colonne.
-               "mt-2" : Ajoute une marge supérieure de 2 unités Bootstrap. "mt" signifie "margin top", et "2" est l'échelle de marge de Bootstrap allant de 0 à 5. -->
-
+      
           <div class="container rounded border" style="margin-top: 30px;">
             <!--Container 1-->
             <div class="row justify-content-start">
               <div class="col-md-12">
-                <div class="d-flex justify-content-around align-items-center p-5"> <!--border : pour avoir une bordure pour le conteneur "div"-->
+                <div class="d-flex justify-content-around align-items-center p-5">
+                  <!--border : pour avoir une bordure pour le conteneur "div"-->
                   <div class="text-center">
                     <span class="fw-bold">6:00 AM</span><br>
                     <span>15°C</span>
                   </div>
-                  <div class="text-center border-start ps-3"> <!--border-start : pour simuler une barre verticale -->
+                  <div class="text-center border-start ps-3">
+                    <!--border-start : pour simuler une barre verticale -->
                     <span class="fw-bold">9:00 AM</span><br>
                     <span>18°C</span>
                   </div>
@@ -98,7 +95,7 @@
               </div>
             </div>
           </div>
-
+      
           <div class="container" style="margin-top: 20px;">
             <!--Container 2-->
             <div class="row justify-content-start">
@@ -107,8 +104,8 @@
                   AIR CONDITIONS
                   <button type="button" class="btn btn-primary">Primary</button>
                 </span>
-                
-                <div class="d-flex justify-content-between align-items-center p-2"> 
+      
+                <div class="d-flex justify-content-between align-items-center p-2">
                   <!--point 1-->
                   <div class="text-center">
                     <span class="fw-bold">Real Feel</span><br>
@@ -118,10 +115,11 @@
                     <span class="fw-bold">Wind</span><br>
                     <span>18°C</span>
                   </div>
-                  <div style="width: 80px;"></div> <!-- Ajuste le pourcentage selon l'espace à combler -->
+                  <div style="width: 80px;"></div>
+                  <!-- Ajuste le pourcentage selon l'espace à combler -->
                 </div>
-
-                <div class="d-flex justify-content-between align-items-center p-2"> 
+      
+                <div class="d-flex justify-content-between align-items-center p-2">
                   <!--point 2-->
                   <div class="text-center">
                     <span class="fw-bold">Chance of rain</span><br>
@@ -130,66 +128,67 @@
                   <div class="text-center ps-3">
                     <span class="fw-bold">UV Index</span><br>
                     <span>18°C</span>
-                  </div>   
-                  <div style="width: 80px;"></div> <!-- Ajuste le pourcentage selon l'espace à combler -->
+                  </div>
+                  <div style="width: 80px;"></div>
                 </div>
+              </div>
             </div>
           </div>
-        </div>
-
-      </div>
       
-    </div>
-  </div>
+        </div>
 
-  <div class="col-md-3" style="width: 400px;">
-    <!-- Conteneur général -->
-    <div class="container rounded border" style="padding-bottom: 30px; margin-top: 70px">
-      <!-- Container version verticale -->
-      <div class="row justify-content-start">
-        <div class="col py-4 px-4"> <!--px et py pour les padding-->
-          <!-- "Home" au début -->
-          7-DAY FORECAST
-          
-          <!-- Conteneur avec des lignes séparées par des barres horizontales -->
-          <div class="d-flex flex-column">
-            <div class="d-flex justify-content-between py-4">
-              <span>today</span>
-              <span>weather</span>
-              <span>feel</span>
-            </div>
-            <div class="d-flex justify-content-between border-top py-4">
-              <span>today</span>
-              <span>weather</span>
-              <span>feel</span>
-            </div>
-            <div class="d-flex justify-content-between border-top py-4">
-              <span>today</span>
-              <span>weather</span>
-              <span>feel</span>
-            </div>
-            <div class="d-flex justify-content-between border-top py-4">
-              <span>today</span>
-              <span>weather</span>
-              <span>feel</span>
-            </div>
-            <div class="d-flex justify-content-between border-top py-4">
-              <span>today</span>
-              <span>weather</span>
-              <span>feel</span>
-            </div>
-            <div class="d-flex justify-content-between border-top py-4">
-              <span>today</span>
-              <span>weather</span>
-              <span>feel</span>
-            </div>
-            <div class="d-flex justify-content-between border-top py-4">
-              <span>today</span>
-              <span>weather</span>
-              <span>feel</span>
+        <!-- 7-Day Forecast -->
+        <div class="col-md-4 d-flex align-items-end" style="width: 400px; margin-top: 70px;">
+          <!-- "d-flex" et "align-items-start" : Utilise Flexbox pour aligner les éléments en haut. -->
+          <div class="container rounded border" style="padding-bottom: 30px;">
+            <!-- Container version verticale -->
+            <div class="row justify-content-start">
+              <div class="col py-4 px-4">
+                <!-- px et py pour les padding -->
+                7-DAY FORECAST
+                <div class="d-flex flex-column">
+                  <!-- Conteneur avec des lignes séparées par des barres horizontales -->
+                  <div class="d-flex justify-content-between py-4">
+                    <span>today</span>
+                    <span>weather</span>
+                    <span>feel</span>
+                  </div>
+                  <div class="d-flex justify-content-between border-top py-4">
+                    <span>today</span>
+                    <span>weather</span>
+                    <span>feel</span>
+                  </div>
+                  <div class="d-flex justify-content-between border-top py-4">
+                    <span>today</span>
+                    <span>weather</span>
+                    <span>feel</span>
+                  </div>
+                  <div class="d-flex justify-content-between border-top py-4">
+                    <span>today</span>
+                    <span>weather</span>
+                    <span>feel</span>
+                  </div>
+                  <div class="d-flex justify-content-between border-top py-4">
+                    <span>today</span>
+                    <span>weather</span>
+                    <span>feel</span>
+                  </div>
+                  <div class="d-flex justify-content-between border-top py-4">
+                    <span>today</span>
+                    <span>weather</span>
+                    <span>feel</span>
+                  </div>
+                  <div class="d-flex justify-content-between border-top py-4">
+                    <span>today</span>
+                    <span>weather</span>
+                    <span>feel</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   </div>
