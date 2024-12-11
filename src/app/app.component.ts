@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'meteo-app';
+  // title = 'meteo-app';
+  // constructor(private router: Router) { }
+
+  // navigateTo(route: string) {
+  //   this.router.navigate([route]);
+  // }
 }

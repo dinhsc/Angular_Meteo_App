@@ -1,0 +1,16 @@
+.container {
+    background-color: #202b3b;
+    border-color: #202b3b;
+    border-radius: 10px;
+}
+
+.box {
+    background-color: #0b131e;
+    border-color: #0b131e;
+    border-radius: 10px; 
+}
+
+button {
+    color: #bec4ce;
+    background-color: #35455e;
+}

@@ -2,13 +2,20 @@
   <!-- Conteneur principal -->
   <div class="main-container">
     <!-- Menu vertical -->
-    <div class="menu rounded border" style="width: 100px; height: 690px; padding: 20px;">
+    <div class="menu" style="width: 100px; height: 690px; padding: 20px;">
       <a href="#" class="list-group-item list-group-item-action">Home</a>
       <div class="d-flex flex-column align-items-center mt-5 gap-3">
-        <a href="#" class="list-group-item list-group-item-action">Weather</a>
-        <a href="#" class="list-group-item list-group-item-action">Cities</a>
-        <a href="#" class="list-group-item list-group-item-action">Map</a>
-        <a href="#" class="list-group-item list-group-item-action">Settings</a>
+        <a href="/home" class="list-group-item list-group-item-action">Weather</a>
+        <a href="/cities" class="list-group-item list-group-item-action">Cities</a>
+        <a href="/maps" class="list-group-item list-group-item-action">Map</a>
+        <a href="/settings" class="list-group-item list-group-item-action">Settings</a>
+
+        <!-- Version avec Angular
+        <a href="#" class="list-group-item list-group-item-action" (click)="navigateTo('/home')">Weather</a>
+        <a href="#" class="list-group-item list-group-item-action" (click)="navigateTo('/cities')">Cities</a>
+        <a href="#" class="list-group-item list-group-item-action" (click)="navigateTo('/maps')">Map</a>
+        <a href="#" class="list-group-item list-group-item-action" (click)="navigateTo('/settings')">Settings</a> -->
+
       </div>
     </div>
 
