@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { CitiesComponent } from './cities/cities.component';
 import { MapComponent } from './map/map.component';
 import { SettingsComponent } from './settings/settings.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SettingsComponent } from './settings/settings.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NgbModule
   ],

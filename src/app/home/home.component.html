@@ -4,10 +4,10 @@
         <div class="d-flex flex-column justify-content-between p-3">
           <!--Alignement du justify-content vers le bas car on a mis "flex-column"-->
           <div class="d-flex flex-column">
-            <h2>Paris</h2>
-            <span>Chance of rain: 0%</span>
+            <h2>{{ weatherData?.name }}</h2>
+            <span>Chance of rain: {{ weatherData?.weather[0]?.description }}</span>
           </div>
-          <h1>19°C</h1>
+          <h1>{{ weatherData?.main?.temp }}°C</h1>
         </div>
         <div>
           <span>
