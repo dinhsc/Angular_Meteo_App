@@ -7,11 +7,14 @@
             <h2>{{ weatherData?.name }}</h2>
             <span>Chance of rain: {{ weatherData?.weather[0]?.description }}</span>
           </div>
-          <h1>{{ weatherData?.main?.temp }}°C</h1>
+          <h1>{{ weatherData?.main?.temp | number:'1.0-0' }}°C</h1>
         </div>
         <div>
           <span>
-            <img src="../assets/img/sun.png" alt="Description de la photo" width="350" height="200">
+            <img [src]="'http://openweathermap.org/img/wn/' + weatherData?.weather[0]?.icon + '@4x.png'" 
+              [alt]="weatherData?.weather[0]?.description" 
+              width="280" 
+              height="200">
           </span>
         </div>
       </div>
@@ -22,42 +25,16 @@
         <div class="row justify-content-start">
           <div class="col-md-12">
             <div class="d-flex justify-content-around align-items-center p-4">
-              <!--border : pour avoir une bordure pour le conteneur "div"-->
-              <div class="text-center">
-                <span class="fw-bold">6:00 AM</span><br>
-                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
-                <span>15°C</span>
+              <!-- Boucle sur les prévisions horaires -->
+              <div class="text-center" *ngFor="let forecast of hourlyForecast">
+                <span class="fw-bold">{{ forecast.dt_txt | date:'shortTime' }}</span><br> <!-- forecast.dt_txt : date/heure / date : pipe Angular pour afficher que les heures -->
+                <img [src]="'http://openweathermap.org/img/wn/' + forecast.weather[0].icon + '@2x.png'" 
+                  [alt]="forecast.weather[0].description"
+                  width="100" 
+                  height="55"><br> 
+                  <h5>{{ forecast.main.temp | number:'1.0-0' }}°C</h5>
               </div>
-              <div class="text-center border-start ps-4">
-                <!--border-start : pour simuler une barre verticale -->
-                <span class="fw-bold">9:00 AM</span><br>
-                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
-                <span>18°C</span>
-              </div>
-              <div class="text-center border-start ps-4">
-                <!--border-start : pour simuler une barre verticale -->
-                <span class="fw-bold">12:00 PM</span><br>
-                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
-                <span>18°C</span>
-              </div>
-              <div class="text-center border-start ps-4">
-                <!--border-start : pour simuler une barre verticale -->
-                <span class="fw-bold">3:00 PM</span><br>
-                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
-                <span>18°C</span>
-              </div>
-              <div class="text-center border-start ps-4">
-                <!--border-start : pour simuler une barre verticale -->
-                <span class="fw-bold">6:00 PM</span><br>
-                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
-                <span>18°C</span>
-              </div>
-              <div class="text-center border-start ps-4">
-                <!--border-start : pour simuler une barre verticale -->
-                <span class="fw-bold">9:00 PM</span><br>
-                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
-                <span>18°C</span>
-              </div>
+              <!-- Prévision statique (1) -->
             </div>
           </div>
         </div>
@@ -110,6 +87,7 @@
           <div class="col py-4 px-4">
             <!-- px et py pour les padding -->
             7-DAY FORECAST
+            
             <div class="d-flex flex-column">
               <!-- Conteneur avec des lignes séparées par des barres horizontales -->
               <div class="d-flex justify-content-between py-2">
@@ -161,7 +139,43 @@
                   weather</span>
                 <span style="margin-top: 10px;">feel</span>
               </div>
+
             </div>
+
+
           </div>
         </div>
       </div>
+
+      
+      <!-- (1) <div class="text-center">
+                <span class="fw-bold">6:00 AM</span><br>
+                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
+                <span>15°C</span>
+              </div>
+              <div class="text-center border-start ps-4">
+                <span class="fw-bold">9:00 AM</span><br>
+                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
+                <span>18°C</span>
+              </div>
+              <div class="text-center border-start ps-4">
+                <span class="fw-bold">12:00 PM</span><br>
+                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
+                <span>18°C</span>
+              </div>
+              <div class="text-center border-start ps-4">
+                <span class="fw-bold">3:00 PM</span><br>
+                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
+                <span>18°C</span>
+              </div>
+              <div class="text-center border-start ps-4">
+                <span class="fw-bold">6:00 PM</span><br>
+                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
+                <span>18°C</span>
+              </div>
+              <div class="text-center border-start ps-4">
+                <span class="fw-bold">9:00 PM</span><br>
+                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
+                <span>18°C</span>
+              </div> -->
+
