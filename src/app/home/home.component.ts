@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   city = 'Lyon';
   weatherData: any;
   hourlyForecast: any[] = [];
-  dailyForecast: any[] = [];
+  dailyForecast: { list: any[] } | null = null;  // D'après la console, c'est un Object et non une liste : any[] = []; 
   errorMessage: string | null = null;
 
 
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
         this.errorMessage = 'Impossible de charger les prévisions horaires.';
       },
       next: (data) => {
-        this.hourlyForecast = data.list.slice(0, 6);
+        this.hourlyForecast = data.list.slice(0, 6); // liste des prévisions : On accède directement à "list" avec "."
         console.log('Prévisions horaires :', this.hourlyForecast);
       },
     });
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
   getDailyForecast(): void {
     this.weatherService.getDailyForecast(this.city).subscribe({
       next: (data) => {
-        this.dailyForecast = data; // liste des prévisions
+        this.dailyForecast = data; 
         console.log('Prévisions à venir :', this.dailyForecast);
       },
       error: (err) => {
@@ -60,6 +60,4 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-
-
 }
