@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   weatherData: any;
   hourlyForecast: any[] = [];
   dailyForecast: { list: any[] } | null = null;  // D'après la console, c'est un Object et non une liste : any[] = []; 
+  filteredDailyForecast: any[] = [];
   errorMessage: string | null = null;
 
 
@@ -20,6 +21,22 @@ export class HomeComponent implements OnInit {
     this.getWeather();
     this.getHourForecast();
     this.getDailyForecast();
+    if (this.dailyForecast?.list) {
+      this.filteredDailyForecast = this.getUniqueDays(this.dailyForecast.list);
+    }
+  }
+
+  getUniqueDays(forecastList: any[]): any[] {
+    const uniqueDays = new Map<string, any>(); // A revoir
+
+    forecastList.forEach((forecast) => {
+      const day = forecast.dt_txt.split(' ')[0];
+      if (!uniqueDays.has(day)) {
+        uniqueDays.set(day, forecast);
+      }
+    });
+
+    return Array.from(uniqueDays.values());
   }
 
   getWeather(): void {
@@ -52,7 +69,12 @@ export class HomeComponent implements OnInit {
     this.weatherService.getDailyForecast(this.city).subscribe({
       next: (data) => {
         this.dailyForecast = data; 
-        console.log('Prévisions à venir :', this.dailyForecast);
+        console.log('Prévisions brutes à venir :', this.dailyForecast);
+
+        // Filtrage des prévisions
+        this.filteredDailyForecast = this.getUniqueDays(this.dailyForecast?.list || []); // revoir
+        console.log('Prévisions filtrées :', this.filteredDailyForecast);
+
       },
       error: (err) => {
         console.error('Erreur lors de la récupération des prévisions :', err);
