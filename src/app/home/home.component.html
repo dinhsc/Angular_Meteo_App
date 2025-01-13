@@ -5,7 +5,7 @@
           <!--Alignement du justify-content vers le bas car on a mis "flex-column"-->
           <div class="d-flex flex-column">
             <h2>{{ weatherData?.name }}</h2>
-            <span>Chance of rain: {{ weatherData?.weather[0]?.description }}</span>  <!-- "." pour rentrer dans un dict ; "[]" pour rentrer dans une liste -->
+            <span>Description : {{ weatherData?.weather[0]?.description }}</span>  <!-- "." pour rentrer dans un dict ; "[]" pour rentrer dans une liste -->
           </div>
           <h1>{{ weatherData?.main?.temp | number:'1.0-0' }}°C</h1>
         </div>
@@ -13,7 +13,7 @@
           <span>
             <img [src]="'http://openweathermap.org/img/wn/' + weatherData?.weather[0]?.icon + '@4x.png'" 
               [alt]="weatherData?.weather[0]?.description" 
-              width="240" 
+              width="200" 
               height="200">
           </span>
         </div>
@@ -30,8 +30,8 @@
                 <span class="fw-bold">{{ forecast.dt_txt | date:'shortTime' }}</span><br> <!-- forecast.dt_txt : date/heure / date : pipe Angular pour afficher que les heures -->
                 <img [src]="'http://openweathermap.org/img/wn/' + forecast.weather[0].icon + '@2x.png'" 
                   [alt]="forecast.weather[0].description"
-                  width="100" 
-                  height="55"><br> 
+                  width="75" 
+                  height="75"><br> 
                   <h5>{{ forecast.main.temp | number:'1.0-0' }}°C</h5>
               </div>
               <!-- Prévision statique (1) -->
@@ -54,11 +54,11 @@
               <!--point 1-->
               <div class="text-center">
                 <span class="fw-bold">Real Feel</span><br>
-                <span>15°C</span>
+                <span>{{ weatherData?.main.temp | number:'1.0-0' }}°C</span>
               </div>
               <div class="text-center ps-3">
                 <span class="fw-bold">Wind</span><br>
-                <span>18°C</span>
+                <span>{{ weatherData?.wind.speed }} km/h</span>
               </div>
               <div style="width: 80px;"></div>
               <!-- Ajuste le pourcentage selon l'espace à combler -->
@@ -67,12 +67,12 @@
             <div class="d-flex justify-content-between align-items-center p-2">
               <!--point 2-->
               <div class="text-center">
-                <span class="fw-bold">Chance of rain</span><br>
-                <span>15°C</span>
+                <span class="fw-bold">Humidity</span><br>
+                <span>{{ weatherData?.main.humidity }}%</span>
               </div>
               <div class="text-center ps-3">
-                <span class="fw-bold">UV Index</span><br>
-                <span>18°C</span>
+                <span class="fw-bold">Cloud</span><br>
+                <span>{{ weatherData?.weather[0].description}}</span>
               </div>
               <div style="width: 80px;"></div>
             </div>
@@ -94,7 +94,7 @@
                 <span style="margin-right: 30px;">
                   <img [src]="'http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png'" 
                        [alt]="day.weather[0].description" 
-                       width="100" 
+                       width="55" 
                        height="55">
                 </span>
                 <span style="margin-top: 10px;">

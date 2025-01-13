@@ -30,20 +30,29 @@ export class HomeComponent implements OnInit {
     const uniqueDays: any[] = []; // On stocke les jours unique ici
 
     // On parcours toute la liste des 40 prévisions 
-    console.log("unique day dsds: ", uniqueDays);
-
     forecastList.forEach((forecast) => {
+      // Récupération du jour à comparer
       const day = forecast.dt_txt.split(' ')[0]; // On sépare "2025-01-12 15:00:00" en deux partie et avec [0] on récupère uniquement "2025-01-12", la date du jour
-     
-      // Vérification si le jour actuel existe déjà
-      const alreadyExists = uniqueDays.some((item) => item.dt_txt.split(' ')[0] === day); // Parcours la liste de uniqueDays et compare la date actuel "item.dt_txt.split(' ')[0]" avec celle stocké précédemment
+      const time = forecast.dt_txt.split(' ')[1]; // Extrait l'heure
+      const existingDayIndex = uniqueDays.findIndex((item) => item.dt_txt.split(' ')[0] === day);
 
-      // Ajoute seulement les nouvelles dates
-      if (!alreadyExists) {
+      if (existingDayIndex === -1) {
+        // Si le jour n'existe pas encore, ajoute la prévision actuelle
         uniqueDays.push(forecast);
+      } else if (time === '12:00:00') {
+        // Si le jour existe déjà mais la prévision actuelle est à 12:00, remplace
+        uniqueDays[existingDayIndex] = forecast;
       }
-
     });
+    //   // Vérification si le jour actuel existe déjà
+    //   const alreadyExists = uniqueDays.some((item) => item.dt_txt.split(' ')[0] === day); // Parcours la liste de uniqueDays et compare la date actuel "item.dt_txt.split(' ')[0]" avec celle stocké précédemment
+
+    //   // Ajoute seulement les nouvelles dates
+    //   if (!alreadyExists && time === '12:00:00') {
+    //     uniqueDays.push(forecast);
+    //   }
+
+    // });
 
     return uniqueDays;
   }
