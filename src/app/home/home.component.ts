@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   city = 'Lyon';
   weatherData: any;
   hourlyForecast: any[] = [];
-  dailyForecast: { list: any[] } | null = null;  // D'après la console, c'est un Object et non une liste : any[] = []; 
+  dailyForecast: { list: any[] } | null = null;  // Ici c'est un Object content une "list" / D'après la console, c'est un Object et non une liste : any[] = []; 
   filteredDailyForecast: any[] = [];
   errorMessage: string | null = null;
 
@@ -27,16 +27,25 @@ export class HomeComponent implements OnInit {
   }
 
   getUniqueDays(forecastList: any[]): any[] {
-    const uniqueDays = new Map<string, any>(); // A revoir
+    const uniqueDays: any[] = []; // On stocke les jours unique ici
+
+    // On parcours toute la liste des 40 prévisions 
+    console.log("unique day dsds: ", uniqueDays);
 
     forecastList.forEach((forecast) => {
-      const day = forecast.dt_txt.split(' ')[0];
-      if (!uniqueDays.has(day)) {
-        uniqueDays.set(day, forecast);
+      const day = forecast.dt_txt.split(' ')[0]; // On sépare "2025-01-12 15:00:00" en deux partie et avec [0] on récupère uniquement "2025-01-12", la date du jour
+     
+      // Vérification si le jour actuel existe déjà
+      const alreadyExists = uniqueDays.some((item) => item.dt_txt.split(' ')[0] === day); // Parcours la liste de uniqueDays et compare la date actuel "item.dt_txt.split(' ')[0]" avec celle stocké précédemment
+
+      // Ajoute seulement les nouvelles dates
+      if (!alreadyExists) {
+        uniqueDays.push(forecast);
       }
+
     });
 
-    return Array.from(uniqueDays.values());
+    return uniqueDays;
   }
 
   getWeather(): void {
@@ -70,9 +79,8 @@ export class HomeComponent implements OnInit {
       next: (data) => {
         this.dailyForecast = data; 
         console.log('Prévisions brutes à venir :', this.dailyForecast);
-
         // Filtrage des prévisions
-        this.filteredDailyForecast = this.getUniqueDays(this.dailyForecast?.list || []); // revoir
+        this.filteredDailyForecast = this.getUniqueDays(this.dailyForecast?.list || []); // Contient les prévisions pour chaque jours, obtenu dans "getUniqueDays"
         console.log('Prévisions filtrées :', this.filteredDailyForecast);
 
       },
