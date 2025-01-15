@@ -20,172 +20,238 @@
       </div>
 
       <!-- Prévisions horaires -->
-      <div class="container" style="margin-top: 30px; margin-left: 120px; width: 945px;">
-        <!--Container 1-->
-        <div class="row justify-content-start">
-          <div class="col-md-12">
-            <div class="d-flex justify-content-around align-items-center p-4">
-              <!-- Boucle sur les prévisions horaires -->
-              <div class="text-center" *ngFor="let forecast of hourlyForecast">
-                <span class="fw-bold">{{ forecast.dt_txt | date:'shortTime' }}</span><br> <!-- forecast.dt_txt : date/heure / date : pipe Angular pour afficher que les heures -->
-                <img [src]="'http://openweathermap.org/img/wn/' + forecast.weather[0].icon + '@2x.png'" 
-                  [alt]="forecast.weather[0].description"
-                  width="75" 
-                  height="75"><br> 
-                  <h5>{{ forecast.main.temp | number:'1.0-0' }}°C</h5>
-              </div>
-              <!-- Prévision statique (1) -->
-            </div>
+      <div class="hourly-forecast-container">
+        <div class="hourly-forecast-row">
+          <!-- Boucle sur les prévisions horaires -->
+          <div class="hourly-forecast-item" *ngFor="let forecast of hourlyForecast">
+            <span class="hourly-time">{{ forecast.dt_txt | date:'shortTime' }}</span>
+            <img 
+              [src]="'http://openweathermap.org/img/wn/' + forecast.weather[0].icon + '@2x.png'" 
+              [alt]="forecast.weather[0].description">
+            <h5 class="hourly-temp">{{ forecast.main.temp | number:'1.0-0' }}°C</h5>
           </div>
         </div>
       </div>
+
 
       <!-- Section AIR CONDITIONS -->
-      <div class="container" style="margin-top: 20px; margin-left: 120px; width: 945px;">
-        <!--Container 2-->
-        <div class="row justify-content-start">
-          <div class="col-md-12" style="padding: 20px;">
-            <span class="d-flex justify-content-between">
-              AIR CONDITIONS
-              <button type="button" class="btn btn-primary">Primary</button>
-            </span>
-  
-            <div class="d-flex justify-content-between align-items-center p-2">
-              <!--point 1-->
-              <div class="text-center">
-                <span class="fw-bold">Real Feel</span><br>
-                <span>{{ weatherData?.main.temp | number:'1.0-0' }}°C</span>
-              </div>
-              <div class="text-center ps-3">
-                <span class="fw-bold">Wind</span><br>
-                <span>{{ weatherData?.wind.speed }} km/h</span>
-              </div>
-              <div style="width: 80px;"></div>
-              <!-- Ajuste le pourcentage selon l'espace à combler -->
-            </div>
-  
-            <div class="d-flex justify-content-between align-items-center p-2">
-              <!--point 2-->
-              <div class="text-center">
-                <span class="fw-bold">Humidity</span><br>
-                <span>{{ weatherData?.main.humidity }}%</span>
-              </div>
-              <div class="text-center ps-3">
-                <span class="fw-bold">Cloud</span><br>
-                <span>{{ weatherData?.weather[0].description}}</span>
-              </div>
-              <div style="width: 80px;"></div>
-            </div>
+      <div class="air-conditions-container">
+        <div class="air-conditions-header">
+          <span>AIR CONDITIONS</span>
+          <button type="button" class="btn btn-primary">Primary</button>
+        </div>
+
+        <div class="air-conditions-row">
+          <!-- Point 1 -->
+          <div class="air-conditions-item">
+            <span class="condition-title">Real Feel</span><br>
+            <span class="condition-value">{{ weatherData?.main.temp | number:'1.0-0' }}°C</span>
+          </div>
+          <div class="air-conditions-item">
+            <span class="condition-title">Wind</span><br>
+            <span class="condition-value">{{ weatherData?.wind.speed }} km/h</span>
+          </div>
+        </div>
+
+        <div class="air-conditions-row">
+          <!-- Point 2 -->
+          <div class="air-conditions-item">
+            <span class="condition-title">Humidity</span><br>
+            <span class="condition-value">{{ weatherData?.main.humidity }}%</span>
+          </div>
+          <div class="air-conditions-item">
+            <span class="condition-title">Cloud</span><br>
+            <span class="condition-value">{{ weatherData?.weather[0].description }}</span>
           </div>
         </div>
       </div>
+
 
       <!-- 7-Day Forecast -->
-      <div class="container" style="padding-bottom: 30px; width: 400px; height: 600px; margin-left: 1100px; margin-top: -600px">
-        <!-- Container version verticale -->
-        <div class="row justify-content-start">
-          <div class="col py-4 px-4">
-            <!-- px et py pour les padding -->
-            7-DAY FORECAST
-            <div class="d-flex flex-column">
-              <!-- Revoir cette partie : On a utilisé les données filtrées "filteredDailyForecast" au lieu de "dailyForecast" -->
-              <div class="d-flex justify-content-between border-top py-3" *ngFor="let day of filteredDailyForecast"> <!--dailyForecast?.list : quand c'est non défini (comme weatherData)-->
-                <span style="margin-top: 10px;">{{ day.dt * 1000 | date: 'EEEE' }}</span>
-                <span style="margin-right: 30px;">
-                  <img [src]="'http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png'" 
-                       [alt]="day.weather[0].description" 
-                       width="55" 
-                       height="55">
-                </span>
-                <span style="margin-top: 10px;">
-                  {{ day.main.temp_min | number: '1.0-0' }}°C / {{ day.main.temp_max | number: '1.0-0' }}°C
-                </span>
-              </div>
-              <!-- Prévision statique sur 7 jours (2) -->
-            </div>
+      <div class="forecast-container">
+        <div class="forecast-header">
+          7-DAY FORECAST
+        </div>
+        <div class="forecast-list">
+          <!-- Boucle pour afficher les prévisions -->
+          <div class="forecast-item" *ngFor="let day of filteredDailyForecast">
+            <span class="forecast-day">{{ day.dt * 1000 | date: 'EEEE' }}</span>
+            <span class="forecast-icon">
+              <img [src]="'http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png'" 
+                  [alt]="day.weather[0].description">
+            </span>
+            <span class="forecast-temp">
+              {{ day.main.temp_min | number: '1.0-0' }}°C / {{ day.main.temp_max | number: '1.0-0' }}°C
+            </span>
           </div>
         </div>
       </div>
 
-              <!-- (1) <div class="text-center">
-                <span class="fw-bold">6:00 AM</span><br>
-                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
-                <span>15°C</span>
-              </div>
-              <div class="text-center border-start ps-4">
-                <span class="fw-bold">9:00 AM</span><br>
-                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
-                <span>18°C</span>
-              </div>
-              <div class="text-center border-start ps-4">
-                <span class="fw-bold">12:00 PM</span><br>
-                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
-                <span>18°C</span>
-              </div>
-              <div class="text-center border-start ps-4">
-                <span class="fw-bold">3:00 PM</span><br>
-                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
-                <span>18°C</span>
-              </div>
-              <div class="text-center border-start ps-4">
-                <span class="fw-bold">6:00 PM</span><br>
-                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
-                <span>18°C</span>
-              </div>
-              <div class="text-center border-start ps-4">
-                <span class="fw-bold">9:00 PM</span><br>
-                <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
-                <span>18°C</span>
-              </div> -->
+
+<!-- Refactoring : Static -> Dynamic API -->
+
+  <!-- (1) <div class="text-center">
+    <span class="fw-bold">6:00 AM</span><br>
+    <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
+    <span>15°C</span>
+  </div>
+  <div class="text-center border-start ps-4">
+    <span class="fw-bold">9:00 AM</span><br>
+    <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
+    <span>18°C</span>
+  </div>
+  <div class="text-center border-start ps-4">
+    <span class="fw-bold">12:00 PM</span><br>
+    <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
+    <span>18°C</span>
+  </div>
+  <div class="text-center border-start ps-4">
+    <span class="fw-bold">3:00 PM</span><br>
+    <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
+    <span>18°C</span>
+  </div>
+  <div class="text-center border-start ps-4">
+    <span class="fw-bold">6:00 PM</span><br>
+    <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
+    <span>18°C</span>
+  </div>
+  <div class="text-center border-start ps-4">
+    <span class="fw-bold">9:00 PM</span><br>
+    <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55"><br>
+    <span>18°C</span>
+  </div> -->
 
 
-              <!-- (2) <div class="d-flex justify-content-between py-2">
-                <span style="margin-top: 10px;">today</span>
-                <span style="margin-right: 30px;">
-                  <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
-                  weather</span>
-                <span style="margin-top: 10px;">feel</span>
-              </div>
-              <div class="d-flex justify-content-between border-top py-2">
-                <span style="margin-top: 10px;">today</span>
-                <span style="margin-right: 30px;">
-                  <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
-                  weather</span>
-                <span style="margin-top: 10px;">feel</span>
-              </div>
-              <div class="d-flex justify-content-between border-top py-2">
-                <span style="margin-top: 10px;">today</span>
-                <span style="margin-right: 30px;">
-                  <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
-                  weather</span>
-                <span style="margin-top: 10px;">feel</span>
-              </div>
-              <div class="d-flex justify-content-between border-top py-2">
-                <span style="margin-top: 10px;">today</span>
-                <span style="margin-right: 30px;">
-                  <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
-                  weather</span>
-                <span style="margin-top: 10px;">feel</span>
-              </div>
-              <div class="d-flex justify-content-between border-top py-2">
-                <span style="margin-top: 10px;">today</span>
-                <span style="margin-right: 30px;">
-                  <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
-                  weather</span>
-                <span style="margin-top: 10px;">feel</span>
-              </div>
-              <div class="d-flex justify-content-between border-top py-2">
-                <span style="margin-top: 10px;">today</span>
-                <span style="margin-right: 30px;">
-                  <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
-                  weather</span>
-                <span style="margin-top: 10px;">feel</span>
-              </div>
-              <div class="d-flex justify-content-between border-top py-2">
-                <span style="margin-top: 10px;">today</span>
-                <span style="margin-right: 30px;">
-                  <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
-                  weather</span>
-                <span style="margin-top: 10px;">feel</span>
-              </div> -->
+  <!-- (2) <div class="d-flex justify-content-between py-2">
+    <span style="margin-top: 10px;">today</span>
+    <span style="margin-right: 30px;">
+      <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
+      weather</span>
+    <span style="margin-top: 10px;">feel</span>
+  </div>
+  <div class="d-flex justify-content-between border-top py-2">
+    <span style="margin-top: 10px;">today</span>
+    <span style="margin-right: 30px;">
+      <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
+      weather</span>
+    <span style="margin-top: 10px;">feel</span>
+  </div>
+  <div class="d-flex justify-content-between border-top py-2">
+    <span style="margin-top: 10px;">today</span>
+    <span style="margin-right: 30px;">
+      <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
+      weather</span>
+    <span style="margin-top: 10px;">feel</span>
+  </div>
+  <div class="d-flex justify-content-between border-top py-2">
+    <span style="margin-top: 10px;">today</span>
+    <span style="margin-right: 30px;">
+      <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
+      weather</span>
+    <span style="margin-top: 10px;">feel</span>
+  </div>
+  <div class="d-flex justify-content-between border-top py-2">
+    <span style="margin-top: 10px;">today</span>
+    <span style="margin-right: 30px;">
+      <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
+      weather</span>
+    <span style="margin-top: 10px;">feel</span>
+  </div>
+  <div class="d-flex justify-content-between border-top py-2">
+    <span style="margin-top: 10px;">today</span>
+    <span style="margin-right: 30px;">
+      <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
+      weather</span>
+    <span style="margin-top: 10px;">feel</span>
+  </div>
+  <div class="d-flex justify-content-between border-top py-2">
+    <span style="margin-top: 10px;">today</span>
+    <span style="margin-right: 30px;">
+      <img src="../assets/img/sun.png" alt="Description de la photo" width="100" height="55">
+      weather</span>
+    <span style="margin-top: 10px;">feel</span>
+  </div> 
 
+------>
+
+<!-- Style Update : Boostrap -> CSS -->
+
+
+<!-- Prévisions horaires
+<div class="container" style="margin-top: 30px; margin-left: 120px; width: 945px;">
+  <div class="row justify-content-start">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-around align-items-center p-4">
+        <div class="text-center" *ngFor="let forecast of hourlyForecast">
+          <span class="fw-bold">{{ forecast.dt_txt | date:'shortTime' }}</span><br> 
+          <img [src]="'http://openweathermap.org/img/wn/' + forecast.weather[0].icon + '@2x.png'" 
+            [alt]="forecast.weather[0].description"
+            width="75" 
+            height="75"><br> 
+            <h5>{{ forecast.main.temp | number:'1.0-0' }}°C</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<!-- Section AIR CONDITIONS
+<div class="container" style="margin-top: 20px; margin-left: 120px; width: 945px;">
+  <div class="row justify-content-start">
+    <div class="col-md-12" style="padding: 20px;">
+      <span class="d-flex justify-content-between">
+        AIR CONDITIONS
+        <button type="button" class="btn btn-primary">Primary</button>
+      </span>
+
+      <div class="d-flex justify-content-between align-items-center p-2">
+        <div class="text-center">
+          <span class="fw-bold">Real Feel</span><br>
+          <span>{{ weatherData?.main.temp | number:'1.0-0' }}°C</span>
+        </div>
+        <div class="text-center ps-3">
+          <span class="fw-bold">Wind</span><br>
+          <span>{{ weatherData?.wind.speed }} km/h</span>
+        </div>
+        <div style="width: 80px;"></div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center p-2">
+        <div class="text-center">
+          <span class="fw-bold">Humidity</span><br>
+          <span>{{ weatherData?.main.humidity }}%</span>
+        </div>
+        <div class="text-center ps-3">
+          <span class="fw-bold">Cloud</span><br>
+          <span>{{ weatherData?.weather[0].description}}</span>
+        </div>
+        <div style="width: 80px;"></div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+  <!-- 7-Day Forecast
+  <div class="container" style="padding-bottom: 30px; width: 400px; height: 600px; margin-left: 1100px; margin-top: -600px">
+    <div class="row justify-content-start">
+      <div class="col py-4 px-4">
+        7-DAY FORECAST
+        <div class="d-flex flex-column">
+          <div class="d-flex justify-content-between border-top py-3" *ngFor="let day of filteredDailyForecast">
+            <span style="margin-top: 10px;">{{ day.dt * 1000 | date: 'EEEE' }}</span>
+            <span style="margin-right: 30px;">
+              <img [src]="'http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png'" 
+                  [alt]="day.weather[0].description" 
+                  width="55" 
+                  height="55">
+            </span>
+            <span style="margin-top: 10px;">
+              {{ day.main.temp_min | number: '1.0-0' }}°C / {{ day.main.temp_max | number: '1.0-0' }}°C
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->

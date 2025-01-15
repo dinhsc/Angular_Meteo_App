@@ -1,5 +1,166 @@
-.container {
+/* Container général pour le 7-Day Forecast */
+.forecast-container {
+    position: absolute;
+    top: 50%;
+    right: 5%; /* Toujours à droite de l'écran */
+    transform: translateY(-50%); /* Centrer verticalement */
+    width: 20%; /* Ajuste la largeur pour qu'elle soit proportionnelle */
+    max-width: 400px; /* Taille maximale */
+    min-width: 300px; /* Taille minimale */
+    height: auto;
+    padding: 20px;
     background-color: #202b3b;
-    border-color: #202b3b;
-    border-radius: 20px;
-}
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* Titre */
+  .forecast-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Liste des prévisions */
+  .forecast-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Élément individuel de la prévision */
+  .forecast-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+  
+  /* Style du jour de la semaine */
+  .forecast-day {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Icône météo */
+  .forecast-icon img {
+    width: 55px;
+    height: 55px;
+  }
+  
+  /* Température */
+  .forecast-temp {
+    font-size: 1rem;
+  }
+  
+
+
+/* Conteneur principal pour les prévisions horaires */
+.hourly-forecast-container {
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    transform: translateY(-50%);
+    width: 80%; /* Largeur adaptable à l'écran */
+    max-width: 945px;
+    min-width: 600px;
+    padding: 20px;
+    background-color: #202b3b;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Ligne contenant les prévisions horaires */
+  .hourly-forecast-row {
+    display: flex;
+    justify-content: space-around; /* Distribution égale des items */
+    align-items: center; /* Centrage vertical */
+    flex-wrap: wrap; /* Adaptation pour petits écrans */
+    gap: 15px; /* Espacement entre les items */
+  }
+  
+  /* Élément individuel de prévision */
+  .hourly-forecast-item {
+    text-align: center;
+    flex: 1 0 120px; /* Largeur minimale de chaque item */
+    max-width: 150px; /* Largeur maximale */
+  }
+  
+  /* Style pour l'heure */
+  .hourly-time {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  /* Style pour l'image */
+  .hourly-forecast-item img {
+    width: 75px;
+    height: 75px;
+  }
+  
+  /* Température */
+  .hourly-temp {
+    font-size: 1.2rem;
+    margin-top: 8px;
+  }
+  
+/* Conteneur principal pour AIR CONDITIONS */
+.air-conditions-container {
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    transform: translateY(-50%);
+    width: 80%; /* Largeur adaptable à l'écran */
+    max-width: 945px;
+    min-width: 600px;
+    padding: 20px;
+    background-color: #202b3b;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* En-tête AIR CONDITIONS */
+  .air-conditions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  /* Ligne contenant les éléments */
+  .air-conditions-row {
+    display: flex;
+    justify-content: space-between; /* Distribution uniforme */
+    align-items: center; /* Centrage vertical */
+    flex-wrap: wrap; /* Adaptation pour petits écrans */
+    gap: 15px; /* Espacement entre les items */
+    padding: 10px 0;
+    border-top: 1px solid #ddd; /* Séparation visuelle entre les lignes */
+  }
+  
+  /* Élément individuel */
+  .air-conditions-item {
+    text-align: center;
+    flex: 1 0 120px; /* Largeur minimale de chaque item */
+    max-width: 150px; /* Largeur maximale */
+  }
+  
+  /* Titres des conditions */
+  .condition-title {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  /* Valeurs des conditions */
+  .condition-value {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
