@@ -1,23 +1,24 @@
 
-<!-- Bloc météo principal -->
-<div class="weather-container border">
-  <div class="weather-info">
-    <div class="weather-details">
+ <div class="d-flex justify-content-between" style="margin-left: 120px; width: 950px;">
+  <div class="d-flex flex-column justify-content-between p-3">
+    <div class="d-flex flex-column">
       <h2>{{ weatherData?.name }}</h2>
-      <span>Description : {{ weatherData?.weather[0]?.description }}</span>
+      <span>Description : {{ weatherData?.weather[0]?.description }}</span>  
     </div>
-    <h1 class="temperature">{{ weatherData?.main?.temp | number:'1.0-0' }}°C</h1>
+    <h1>{{ weatherData?.main?.temp | number:'1.0-0' }}°C</h1>
   </div>
-  <div class="weather-icon">
-    <img 
-      [src]="'http://openweathermap.org/img/wn/' + weatherData?.weather[0]?.icon + '@4x.png'" 
-      [alt]="weatherData?.weather[0]?.description">
+  <div>
+    <span>
+      <img [src]="'http://openweathermap.org/img/wn/' + weatherData?.weather[0]?.icon + '@4x.png'" 
+        [alt]="weatherData?.weather[0]?.description" 
+        width="200" 
+        height="200">
+    </span>
   </div>
-</div>
-
+</div> 
 
 <!-- Prévisions horaires -->
-<div class="hourly-forecast-container border">
+<div class="hourly-forecast-container">
   <div class="hourly-forecast-row">
     <!-- Boucle sur les prévisions horaires -->
     <div class="hourly-forecast-item" *ngFor="let forecast of hourlyForecast">
@@ -31,8 +32,9 @@
 </div>
 
 
+
 <!-- Section AIR CONDITIONS -->
-<div class="air-conditions-container border">
+<div class="air-conditions-container">
   <div class="air-conditions-header">
     <span>AIR CONDITIONS</span>
     <button type="button" class="btn btn-primary">Primary</button>
@@ -63,8 +65,7 @@
   </div>
 </div>
 
-
-<!-- 7-Day Forecast -->
+  <!-- 7-Day Forecast -->
 <div class="forecast-container border">
   <div class="forecast-header">
     7-DAY FORECAST
@@ -282,3 +283,5 @@
       </div>
     </div>
   </div> -->
+
+  
