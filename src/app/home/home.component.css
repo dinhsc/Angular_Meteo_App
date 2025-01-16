@@ -1,3 +1,73 @@
+.weather-container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 140px ;
+  max-width: 950px;
+  padding: 20px;
+  flex-wrap: wrap; /* Pour s'assurer que les éléments s'empilent sur petits écrans */
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.weather-details {
+  margin-bottom: 10px;
+}
+
+.temperature {
+  font-size: 2.5rem;
+  margin-top: 20px;
+}
+
+.weather-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-icon img {
+  max-width: 100%;
+  height: auto;
+  width: 200px; /* Taille de base */
+  max-width: 200px;
+}
+
+@media screen and (max-width: 768px) {
+  .weather-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .weather-info {
+    margin-bottom: 20px;
+  }
+
+  .temperature {
+    font-size: 2rem;
+  }
+
+  .weather-icon img {
+    width: 150px; /* Taille réduite sur petits écrans */
+    max-width: 150px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .temperature {
+    font-size: 1.5rem;
+  }
+
+  .weather-icon img {
+    width: 120px; /* Encore plus petit sur mobiles */
+    max-width: 120px;
+  }
+}
+
+
 /* Container général pour le 7-Day Forecast */
 .forecast-container {
     position: absolute;
@@ -12,64 +82,63 @@
     background-color: #202b3b;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    flex-wrap: wrap;
   }
   
-  /* Titre */
-  .forecast-header {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  /* Liste des prévisions */
-  .forecast-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  /* Élément individuel de la prévision */
-  .forecast-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-  }
-  
-  /* Style du jour de la semaine */
-  .forecast-day {
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  
-  /* Icône météo */
-  .forecast-icon img {
-    width: 55px;
-    height: 55px;
-  }
-  
-  /* Température */
-  .forecast-temp {
-    font-size: 1rem;
-  }
-  
+/* Titre */
+.forecast-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Liste des prévisions */
+.forecast-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Élément individuel de la prévision */
+.forecast-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+/* Style du jour de la semaine */
+.forecast-day {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Icône météo */
+.forecast-icon img {
+  width: 55px;
+  height: 55px;
+}
+
+/* Température */
+.forecast-temp {
+  font-size: 1rem;
+}
+
 
 
 /* Conteneur principal pour les prévisions horaires */
 .hourly-forecast-container {
     position: absolute;
-    top: 60%;
+    top: 40%;
     left: 10%;
-    transform: translateY(-50%);
     width: 80%; /* Largeur adaptable à l'écran */
     max-width: 945px;
     min-width: 600px;
     padding: 20px;
     background-color: #202b3b;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   /* Ligne contenant les prévisions horaires */
@@ -77,7 +146,7 @@
     display: flex;
     justify-content: space-around; /* Distribution égale des items */
     align-items: center; /* Centrage vertical */
-    flex-wrap: wrap; /* Adaptation pour petits écrans */
+    flex-wrap: wrap; /* Adaptation pour petits écrans - Pour décaler les éléments*/
     gap: 15px; /* Espacement entre les items */
   }
   
@@ -110,9 +179,8 @@
 /* Conteneur principal pour AIR CONDITIONS */
 .air-conditions-container {
     position: absolute;
-    top: 100%;
+    top: 70%;
     left: 10%;
-    transform: translateY(-50%);
     width: 80%; /* Largeur adaptable à l'écran */
     max-width: 945px;
     min-width: 600px;
@@ -127,9 +195,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
     font-weight: bold;
-    font-size: 1.2rem;
   }
   
   /* Ligne contenant les éléments */
@@ -138,9 +204,7 @@
     justify-content: space-between; /* Distribution uniforme */
     align-items: center; /* Centrage vertical */
     flex-wrap: wrap; /* Adaptation pour petits écrans */
-    gap: 15px; /* Espacement entre les items */
     padding: 10px 0;
-    border-top: 1px solid #ddd; /* Séparation visuelle entre les lignes */
   }
   
   /* Élément individuel */
@@ -153,7 +217,6 @@
   /* Titres des conditions */
   .condition-title {
     font-weight: bold;
-    display: block;
     margin-bottom: 8px;
     color: #333;
   }
