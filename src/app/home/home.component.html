@@ -1,89 +1,95 @@
 
- <div class="d-flex justify-content-between" style="margin-left: 120px; width: 950px;">
-  <div class="d-flex flex-column justify-content-between p-3">
-    <div class="d-flex flex-column">
-      <h2>{{ weatherData?.name }}</h2>
-      <span>Description : {{ weatherData?.weather[0]?.description }}</span>  
-    </div>
-    <h1>{{ weatherData?.main?.temp | number:'1.0-0' }}°C</h1>
-  </div>
-  <div>
-    <span>
-      <img [src]="'http://openweathermap.org/img/wn/' + weatherData?.weather[0]?.icon + '@4x.png'" 
-        [alt]="weatherData?.weather[0]?.description" 
-        width="200" 
-        height="200">
-    </span>
-  </div>
-</div> 
 
-<!-- Prévisions horaires -->
-<div class="hourly-forecast-container">
-  <div class="hourly-forecast-row">
-    <!-- Boucle sur les prévisions horaires -->
-    <div class="hourly-forecast-item" *ngFor="let forecast of hourlyForecast">
-      <span class="hourly-time">{{ forecast.dt_txt | date:'shortTime' }}</span>
-      <img 
-        [src]="'http://openweathermap.org/img/wn/' + forecast.weather[0].icon + '@2x.png'" 
-        [alt]="forecast.weather[0].description">
-      <h5 class="hourly-temp">{{ forecast.main.temp | number:'1.0-0' }}°C</h5>
+<div class="main-container">
+  <!-- Prévisions horaires + Air condition section-->
+  <div class="sec-main-container">
+    <div class="main-data">
+      <div class="data">
+        <div class="main-temp">
+          <h2>{{ weatherData?.name }}</h2>
+          <span>Description : {{ weatherData?.weather[0]?.description }}</span>  
+        </div>
+        <h1>{{ weatherData?.main?.temp | number:'1.0-0' }}°C</h1>
+      </div>
+      <div class="main-weather-icon">
+        <span>
+          <img [src]="'http://openweathermap.org/img/wn/' + weatherData?.weather[0]?.icon + '@4x.png'" 
+            [alt]="weatherData?.weather[0]?.description" 
+            width="200" 
+            height="200">
+        </span>
+      </div>
+    </div> 
+    <!-- Prévisions horaires -->
+    <div class="hourly-forecast-container">
+      <div class="hourly-forecast-row">
+        <!-- Boucle sur les prévisions horaires -->
+        <div class="hourly-forecast-item" *ngFor="let forecast of hourlyForecast">
+          <span class="hourly-time">{{ forecast.dt_txt | date:'shortTime' }}</span>
+          <img 
+            [src]="'http://openweathermap.org/img/wn/' + forecast.weather[0].icon + '@2x.png'" 
+            [alt]="forecast.weather[0].description">
+          <h5 class="hourly-temp">{{ forecast.main.temp | number:'1.0-0' }}°C</h5>
+        </div>
+      </div>
+    </div>
+    <!-- Section AIR CONDITIONS -->
+    <div class="air-conditions-container">
+      <div class="air-conditions-header">
+        <span>AIR CONDITIONS</span>
+        <button type="button" class="btn btn-primary">Primary</button>
+      </div>
+            <!-- Point 1 -->
+      <div class="air-conditions-row">
+        <div class="air-conditions-item">
+          <span class="condition-title">Real Feel</span><br>
+          <span class="condition-value">{{ weatherData?.main.temp | number:'1.0-0' }}°C</span>
+        </div>
+        <div class="air-conditions-item">
+          <span class="condition-title">Wind</span><br>
+          <span class="condition-value">{{ weatherData?.wind.speed }} km/h</span>
+        </div>
+      </div>
+            <!-- Point 2 -->
+      <div class="air-conditions-row">
+        <div class="air-conditions-item">
+          <span class="condition-title">Humidity</span><br>
+          <span class="condition-value">{{ weatherData?.main.humidity }}%</span>
+        </div>
+        <div class="air-conditions-item">
+          <span class="condition-title">Cloud</span><br>
+          <span class="condition-value">{{ weatherData?.weather[0].description }}</span>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-
-
-<!-- Section AIR CONDITIONS -->
-<div class="air-conditions-container">
-  <div class="air-conditions-header">
-    <span>AIR CONDITIONS</span>
-    <button type="button" class="btn btn-primary">Primary</button>
-  </div>
-
-  <div class="air-conditions-row">
-    <!-- Point 1 -->
-    <div class="air-conditions-item">
-      <span class="condition-title">Real Feel</span><br>
-      <span class="condition-value">{{ weatherData?.main.temp | number:'1.0-0' }}°C</span>
-    </div>
-    <div class="air-conditions-item">
-      <span class="condition-title">Wind</span><br>
-      <span class="condition-value">{{ weatherData?.wind.speed }} km/h</span>
-    </div>
-  </div>
-
-  <div class="air-conditions-row">
-    <!-- Point 2 -->
-    <div class="air-conditions-item">
-      <span class="condition-title">Humidity</span><br>
-      <span class="condition-value">{{ weatherData?.main.humidity }}%</span>
-    </div>
-    <div class="air-conditions-item">
-      <span class="condition-title">Cloud</span><br>
-      <span class="condition-value">{{ weatherData?.weather[0].description }}</span>
-    </div>
-  </div>
-</div>
 
   <!-- 7-Day Forecast -->
-<div class="forecast-container border">
-  <div class="forecast-header">
-    7-DAY FORECAST
-  </div>
-  <div class="forecast-list">
-    <!-- Boucle pour afficher les prévisions -->
-    <div class="forecast-item" *ngFor="let day of filteredDailyForecast">
-      <span class="forecast-day">{{ day.dt * 1000 | date: 'EEEE' }}</span>
-      <span class="forecast-icon">
-        <img [src]="'http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png'" 
-            [alt]="day.weather[0].description">
-      </span>
-      <span class="forecast-temp">
-        {{ day.main.temp_min | number: '1.0-0' }}°C / {{ day.main.temp_max | number: '1.0-0' }}°C <!-- Modifier pour prendre les bonnes température (min et max dans le non filtré) -->
-      </span>
+  <div class="forecast-container">
+    <div class="forecast-header">
+      7-DAY FORECAST
+    </div>
+    <div class="forecast-list">
+      <!-- Boucle pour afficher les prévisions -->
+      <div class="forecast-item" *ngFor="let day of filteredDailyForecast">
+        <span class="forecast-day">{{ day.dt * 1000 | date: 'EEEE' }}</span>
+        <span class="forecast-icon">
+          <img [src]="'http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png'" 
+              [alt]="day.weather[0].description">
+        </span>
+        <span class="forecast-temp">
+          {{ day.main.temp_min | number: '1.0-0' }}°C / {{ day.main.temp_max | number: '1.0-0' }}°C <!-- Modifier pour prendre les bonnes température (min et max dans le non filtré) -->
+        </span>
+      </div>
     </div>
   </div>
+
 </div>
+
+
+
+
+
 
 
       <!-- Bloc météo principal

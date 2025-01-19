@@ -1,6 +1,8 @@
 body{
+    border: solid;
     background-color: #0b131e;
     color: #bec4ce;
+
 }
 
 .height{
@@ -9,7 +11,8 @@ body{
 }
 
 .form{
-
+    max-width: 65%;
+    min-width: 768px;
     position: relative;
 }
 
