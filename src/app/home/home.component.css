@@ -4,23 +4,32 @@
 }
 .main-container {
   display: flex; /* Pour l'affichage horizontale (par défaut) - Pour placer "7DayForecast à droite*/
-  border: solid;
+  gap: 20px; /* espacement entre le haut et bas */
   justify-content: space-between;
 }
 
 .sec-main-container {
   display: flex; /* Pour l'affichage horizontale (par défaut) */
   flex-direction: column;
-  gap: 20px;
+  gap: 20px; /* espacement entre le haut et bas */
   margin-left: 120px;
-  max-width: 65%;
   min-width: 768px; /* Fixe une largeur minimal quand on réduit la largeur */
+  flex: 1; /* Permet d'occuper l'espace disponible - Sinon espacement non respecté en étirant !!!!!!*/  /* L'élément peut croître pour remplir l'espace disponible */
+
 
 }
 
 .main-data {
   display: flex;
   justify-content: space-between;
+
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
 
 }
 
@@ -48,10 +57,9 @@
 }
 
 .air-conditions-container {
-  padding: 20px;
   background-color: #202b3b;
   border-radius: 10px;
-
+  padding: 15px;
 }
 
 .air-conditions-header {
@@ -67,7 +75,7 @@
   align-items: center; /* Centrage vertical */
   flex-wrap: wrap; /* Adaptation pour petits écrans */
   max-width: 70%;
-  padding: 20px;
+  padding: 15px;
 }
 
 .air-conditions-item {
@@ -77,8 +85,16 @@
 
 /* Container général pour le 7-Day Forecast */
 .forecast-container {
+  padding: 15px;
   background-color: #202b3b;
   border-radius: 10px;
   min-width: 350px;
+}
+
+.forecast-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; /* Distribution uniforme */
 }
 
