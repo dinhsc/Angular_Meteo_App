@@ -6,14 +6,16 @@
   display: flex; /* Pour l'affichage horizontale (par défaut) - Pour placer "7DayForecast à droite*/
   gap: 20px; /* espacement entre le haut et bas */
   justify-content: space-between;
+  margin-left: 120px;
+  min-width: 425px;
+
+
 }
 
 .sec-main-container {
   display: flex; /* Pour l'affichage horizontale (par défaut) */
   flex-direction: column;
   gap: 20px; /* espacement entre le haut et bas */
-  margin-left: 120px;
-  min-width: 768px; /* Fixe une largeur minimal quand on réduit la largeur */
   flex: 1; /* Permet d'occuper l'espace disponible - Sinon espacement non respecté en étirant !!!!!!*/  /* L'élément peut croître pour remplir l'espace disponible */
 
 
@@ -43,17 +45,20 @@
   padding: 15px;
   background-color: #202b3b;
   border-radius: 10px;
+
 }
 
 .hourly-forecast-row {
   display: flex; /* Pour l'affichage horizontale (par défaut) */
   justify-content: space-around;
+  flex-wrap: wrap; /* pour que le contenu aille à la ligne */
 }
 
 /* Élément individuel de prévision */
 .hourly-forecast-item {
   text-align: center;
   max-width: 150px; /* Largeur maximale de chaque prévisions */
+  
 }
 
 .air-conditions-container {
@@ -88,7 +93,7 @@
   padding: 15px;
   background-color: #202b3b;
   border-radius: 10px;
-  min-width: 350px;
+  /* min-width: 350px; - Si on laisse, en rétrécissant, on ne conserve pas l'espacement */
 }
 
 .forecast-list {
@@ -98,3 +103,11 @@
   justify-content: space-around; /* Distribution uniforme */
 }
 
+@media (max-width: 1280px) { 
+  .main-container {
+    display: flex; /* Pour l'affichage horizontale (par défaut) - Pour placer "7DayForecast à droite*/
+    flex-direction: column;
+    gap: 20px; /* espacement entre le haut et bas */
+    justify-content: space-between;
+  }
+}

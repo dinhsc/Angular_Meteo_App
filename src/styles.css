@@ -1,7 +1,6 @@
 body{
     background-color: #0b131e;
     color: #bec4ce;
-
 }
 
 .height{
@@ -53,3 +52,16 @@ body{
 .form-input:focus{
     box-shadow: none;
 }
+
+.search-container {
+    margin-left: 125px;
+    margin-right: 450px;
+    margin-top: -685px;
+    max-height: 40px;
+}
+
+@media (max-width: 1280px) { 
+    .menu {
+        /* Transformer le menu en petit bloc */
+    }
+  }
