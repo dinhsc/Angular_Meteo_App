@@ -1,35 +1,26 @@
-<div class="container-fluid" style="margin-top: 20px;">
-  <!-- Conteneur principal -->
-  <div class="main-container">
-    <!-- Menu vertical -->
-    <div class="menu" style="width: 100px; height: 690px; padding: 20px;">
-      <a href="#" class="list-group-item list-group-item-action">Home</a>
-      <div class="d-flex flex-column align-items-center mt-5 gap-3">
-        <a href="/home" class="list-group-item list-group-item-action">Weather</a>
-        <a href="/cities" class="list-group-item list-group-item-action">Cities</a>
-        <a href="/maps" class="list-group-item list-group-item-action">Map</a>
-        <a href="/settings" class="list-group-item list-group-item-action">Settings</a>
-
-        <!-- Version avec Angular
-        <a href="#" class="list-group-item list-group-item-action" (click)="navigateTo('/home')">Weather</a>
-        <a href="#" class="list-group-item list-group-item-action" (click)="navigateTo('/cities')">Cities</a>
-        <a href="#" class="list-group-item list-group-item-action" (click)="navigateTo('/maps')">Map</a>
-        <a href="#" class="list-group-item list-group-item-action" (click)="navigateTo('/settings')">Settings</a> -->
-
-      </div>
+<div class="test">
+  <!-- Menu vertical -->
+  <div class="menu border">
+    <a href="#" class="list-group-item list-group-item-action">Home</a>
+    <div>
+      <a href="/home" class="list-group-item list-group-item-action">Weather</a>
+      <a href="/cities" class="list-group-item list-group-item-action">Cities</a>
+      <a href="/maps" class="list-group-item list-group-item-action">Map</a>
+      <a href="/settings" class="list-group-item list-group-item-action">Settings</a>
     </div>
+  </div>
 
+  <!-- Contenu principal -->
+  <div class="main-content">
     <!-- Barre de recherche -->
     <div class="search-container">
       <div class="form mb-4">
         <i class="fa fa-search"></i>
         <input type="text" class="form-control form-input" placeholder="Search for cities">
         <span class="left-pan"><i class="fa fa-microphone"></i></span>
-      </div>    
+      </div>
     </div>
-
     <!-- Section principale -->
     <router-outlet></router-outlet>
-
   </div>
 </div>

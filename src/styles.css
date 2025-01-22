@@ -4,18 +4,14 @@ body{
 }
 
 .height{
-
     height: 100vh;
 }
 
 .form{
-    max-width: 65%;
-    min-width: 768px;
     position: relative;
 }
 
 .form .fa-search{
-
     position: absolute;
     top:20px;
     left: 20px;

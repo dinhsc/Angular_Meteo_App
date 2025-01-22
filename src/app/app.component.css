@@ -1,9 +1,18 @@
-.menu{
-    background-color: #202b3b;
-    border-color: #202b3b;
-    border-radius: 20px;
-}
+/* Le conteneur principal occupe toute la hauteur */
 
-.search-container {
-    
-}
+  
+  /* Menu occupe tout l'espace disponible en hauteur */
+  .menu {
+    width: 230px;
+    padding: 20px;
+    background-color: #202b3b;
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+  }
+  
+  .search-container {
+    margin-left: 250px;
+  }
+
+  
