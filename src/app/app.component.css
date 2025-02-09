@@ -1,18 +1,24 @@
-/* Le conteneur principal occupe toute la hauteur */
 
+
+/* Le conteneur principal occupe toute la hauteur */
+.main-content {
+  display: flex;
+  flex-direction: row;
+
+}
   
   /* Menu occupe tout l'espace disponible en hauteur */
-  .menu {
-    width: 230px;
-    padding: 20px;
-    background-color: #202b3b;
-    display: flex;
-    flex-direction: column;
-    height: 700px;
-  }
+
+.menu {
+  width: 200px;
+  padding: 20px;
+  background-color: #202b3b;
   
-  .search-container {
-    margin-left: 250px;
-  }
+}
+
+.search-container {
+  flex: 1; /* Prend tout l'espace restant */
+  padding: 20px;
+}
 
   

@@ -6,9 +6,9 @@
   display: flex; /* Pour l'affichage horizontale (par défaut) - Pour placer "7DayForecast à droite*/
   gap: 20px; /* espacement entre le haut et bas */
   justify-content: space-between;
-  margin-left: 250px;
   min-width: 425px;
-
+  height: 100hv;
+  min-height: 88vh;
 
 }
 
@@ -17,7 +17,6 @@
   flex-direction: column;
   gap: 20px; /* espacement entre le haut et bas */
   flex: 1; /* Permet d'occuper l'espace disponible - Sinon espacement non respecté en étirant !!!!!!*/  /* L'élément peut croître pour remplir l'espace disponible */
-
 
 }
 

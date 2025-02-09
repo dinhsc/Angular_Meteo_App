@@ -1,9 +1,9 @@
 
 
-<div class="main-container border">
+<div class="main-container">
   <!-- Prévisions horaires + Air condition section-->
   <div class="sec-main-container">
-    <div class="main-data">
+    <div class="main-data ">
       <div class="data">
         <div class="main-temp">
           <h2>{{ weatherData?.name }}</h2>
@@ -21,7 +21,7 @@
       </div>
     </div> 
     <!-- Prévisions horaires -->
-    <div class="hourly-forecast-container">
+    <div class="hourly-forecast-container border">
       <div class="hourly-forecast-row">
         <!-- Boucle sur les prévisions horaires -->
         <div class="hourly-forecast-item" *ngFor="let forecast of hourlyForecast">
@@ -34,7 +34,7 @@
       </div>
     </div>
     <!-- Section AIR CONDITIONS -->
-    <div class="air-conditions-container">
+    <div class="air-conditions-container border">
       <div class="air-conditions-header">
         <span>AIR CONDITIONS</span>
         <button type="button" class="btn btn-primary">Primary</button>

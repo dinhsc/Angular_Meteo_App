@@ -1,24 +1,21 @@
-<div class="test">
-  <!-- Menu vertical -->
+<!-- Contenu principal -->
+<div class="main-content">
+    <!-- Menu vertical -->
   <div class="menu border">
-    <a href="#" class="list-group-item list-group-item-action">Home</a>
-    <div>
-      <a href="/home" class="list-group-item list-group-item-action">Weather</a>
-      <a href="/cities" class="list-group-item list-group-item-action">Cities</a>
-      <a href="/maps" class="list-group-item list-group-item-action">Map</a>
-      <a href="/settings" class="list-group-item list-group-item-action">Settings</a>
-    </div>
+  <a href="#" class="list-group-item list-group-item-action">Home</a>
+  <div>
+    <a href="/home" class="list-group-item list-group-item-action">Weather</a>
+    <a href="/cities" class="list-group-item list-group-item-action">Cities</a>
+    <a href="/maps" class="list-group-item list-group-item-action">Map</a>
+    <a href="/settings" class="list-group-item list-group-item-action">Settings</a>
   </div>
-
-  <!-- Contenu principal -->
-  <div class="main-content">
-    <!-- Barre de recherche -->
-    <div class="search-container">
-      <div class="form mb-4">
-        <i class="fa fa-search"></i>
-        <input type="text" class="form-control form-input" placeholder="Search for cities">
-        <span class="left-pan"><i class="fa fa-microphone"></i></span>
-      </div>
+  </div>
+  <!-- Barre de recherche -->
+  <div class="search-container">
+    <div class="form mb-4">
+      <i class="fa fa-search"></i>
+      <input type="text" class="form-control form-input" placeholder="Search for cities">
+      <span class="left-pan"><i class="fa fa-microphone"></i></span>
     </div>
     <!-- Section principale -->
     <router-outlet></router-outlet>
